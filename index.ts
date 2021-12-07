@@ -36,10 +36,16 @@ app.get("/bmi", (req, res) => {
   }
 });
 
+interface body {
+  daily_exercises?: string[];
+  target?: string;
+}
 app.post("/exercises", (req, res) => {
-  if (req.body["daily_exercises"] && req.body.target) {
-    const target = +req.body.target;
-    const daily_exercises: number[] = req.body["daily_exercises"].map(
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const body: body = req.body;
+  if (body["daily_exercises"] && body.target) {
+    const target: number = +body.target;
+    const daily_exercises: number[] = body["daily_exercises"].map(
       (hours: string) => {
         return +hours;
       }
