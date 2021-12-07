@@ -8,10 +8,13 @@ interface result {
   average: number;
 }
 
-function calculateExercises(dailyExercise: number[], rating?: number): result {
-  let trainingDays = dailyExercise.filter((hours) => hours !== 0).length;
-  let sum = dailyExercise.reduce((a, b) => a + b, 0);
-  let average = sum / trainingDays;
+export function calculateExercises(
+  dailyExercise: number[],
+  rating?: number
+): result {
+  const trainingDays = dailyExercise.filter((hours) => hours !== 0).length;
+  const sum = dailyExercise.reduce((a, b) => a + b, 0);
+  const average = sum / trainingDays;
   let returned: result;
   if (rating) {
     returned = {
@@ -41,7 +44,7 @@ function calculateExercises(dailyExercise: number[], rating?: number): result {
   return returned;
 }
 
-let args = process.argv.slice(2);
+const args = process.argv.slice(2);
 let numbersArr: number[];
 try {
   numbersArr = args.map((arg) => {
