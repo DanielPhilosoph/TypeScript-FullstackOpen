@@ -41,4 +41,13 @@ function calculateExercises(dailyExercise: number[], rating?: number): result {
   return returned;
 }
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+let args = process.argv.slice(2);
+let numbersArr: number[];
+try {
+  numbersArr = args.map((arg) => {
+    return parseInt(arg);
+  });
+  console.log(calculateExercises(numbersArr, 2));
+} catch (error) {
+  console.log("All args must be number");
+}
